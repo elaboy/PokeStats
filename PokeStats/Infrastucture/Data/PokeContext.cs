@@ -12,6 +12,13 @@ public class PokeContext : DbContext
 
     }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseMySQL();
+        base.OnConfiguring(optionsBuilder);
+
+    }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Pokemon>().HasKey(p => p.PokemonId);
