@@ -5,7 +5,7 @@ namespace Infrastructure.Data;
 
 public class PokeContext : DbContext
 {
-    DbSet<Pokemon> Pokemons { get; set; }
+    public DbSet<Pokemon> Pokemons { get; set; }
 
     public PokeContext(DbContextOptions<PokeContext> options) : base(options)
     {
