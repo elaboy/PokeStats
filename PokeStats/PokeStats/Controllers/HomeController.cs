@@ -15,7 +15,10 @@ namespace PokeStats.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            ViewBag.Hola = "PokeStats-Home";
+            var error = new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier };
+
+            return View(error);
         }
 
         public IActionResult Privacy()
