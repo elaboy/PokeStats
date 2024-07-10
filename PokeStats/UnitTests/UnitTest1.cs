@@ -2,8 +2,6 @@ using Infrastructure.Data;
 using Infrastructure.Enums;
 using Infrastructure.Models;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Frameworks;
-using NUnit.Framework.Constraints;
 
 namespace UnitTests
 {
