@@ -21,4 +21,5 @@ public enum PokeType
     Fairy = 16,
     Dragon = 17,
     Stellar = 18,
+    None = 19
 }

@@ -2,6 +2,7 @@
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(PokeContext))]
-    partial class PokeContextModelSnapshot : ModelSnapshot
+    [Migration("20240710053240_v0.01_AddLegendaryToPokemon")]
+    partial class v001_AddLegendaryToPokemon
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,9 +46,6 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("PokedexId")
-                        .HasColumnType("int");
-
                     b.Property<int>("SpecialAttack")
                         .HasColumnType("int");
 
@@ -61,7 +61,7 @@ namespace Infrastructure.Migrations
                     b.Property<int>("Type1")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Type2")
+                    b.Property<int>("Type2")
                         .HasColumnType("int");
 
                     b.HasKey("PokemonId");
