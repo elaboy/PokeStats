@@ -1,7 +1,5 @@
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Frameworks;
-using NUnit.Framework.Constraints;
 
 namespace UnitTests
 {
