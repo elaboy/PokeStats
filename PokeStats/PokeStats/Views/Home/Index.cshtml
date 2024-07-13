@@ -1,10 +1,18 @@
-﻿@model ErrorViewModel;
+﻿@using Infrastructure.Models;
+@model List<Pokemon>;
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome @ViewBag.Hola @Model.RequestId</h1>
+    <h1 class="display-4">Welcome </h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<ul style="list-style-type: none; padding: 0;">
+@foreach (var pokemon in Model)
+{
+    <li style="margin-bottom: 5px;">@pokemon.Name</li>
+}
+</ul>

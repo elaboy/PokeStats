@@ -1,5 +1,10 @@
+using Infrastructure.Enums;
+using Infrastructure.Models;
+using Infrastructure.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Mysqlx.Crud;
 using PokeStats.Models;
+using PokeStats.Services;
 using System.Diagnostics;
 
 namespace PokeStats.Controllers
@@ -7,18 +12,20 @@ namespace PokeStats.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IPokemonRepository _pokemonRepository;
+        private readonly IPokemonService _pokemonService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger , IPokemonRepository pokemonRepository , IPokemonService pokemonService)
         {
             _logger = logger;
+            _pokemonRepository = pokemonRepository;
+            _pokemonService = pokemonService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            ViewBag.Hola = "PokeStats-Home";
-            var error = new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier };
-
-            return View(error);
+            var pokemons = await _pokemonRepository.GetAllPokemons();
+            return View(pokemons);
         }
 
         public IActionResult Privacy()

@@ -7,6 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<PokeContext>(options =>
        options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDatabase(builder.Configuration);
+builder.Services.AddApplicationServices();
+builder.Services.AddRepositories();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
